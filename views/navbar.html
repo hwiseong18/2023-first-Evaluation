@@ -9,17 +9,24 @@
           <div class="ml-10 flex items-baseline space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">수행평가</a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">사용자닉네임</a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">사용자리스트</a>
+            {% if user %} 
+              <a href="/user/myPage" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{user.name}}</a>
+            {% else %}
+              <a href="/auth/signIn" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">사용자페이지</a>
+            {% endif %} 
+            <a href="/user/list" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">사용자리스트</a>
           </div>
         </div>
         <div class="ml-4 flex items-center md:ml-6">
-            <button class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full">
+          {% if user %}
+            <button onclick="location.href='/auth/signOut'" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full">
               Sign out
             </button>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+          {% else %} 
+            <button onclick="location.href='/auth/signIn'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
               Sign In
             </button>
+          {% endif %} 
         </div>
     </div>
   </nav>
