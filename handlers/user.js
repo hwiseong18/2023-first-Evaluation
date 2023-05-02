@@ -9,7 +9,10 @@ const list = (req, res)=>{
 }
 
 const myPage = (req, res)=>{
-    res.render('user/myPage.html', {user:req.session.user});
+    if(req.session.user !== undefined)
+        res.render('user/myPage.html', {user:req.session.user});
+    else
+        res.redirect('/')
 }
 
 const update = (req, res)=>{
