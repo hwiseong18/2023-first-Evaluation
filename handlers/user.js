@@ -12,7 +12,7 @@ const myPage = (req, res)=>{
     if(req.session.user !== undefined)
         res.render('user/myPage.html', {user:req.session.user});
     else
-        res.redirect('/')
+    res.render('message.html', {msg:'로그인하세요'})
 }
 
 const update = (req, res)=>{
