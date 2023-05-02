@@ -16,8 +16,8 @@ const myPage = (req, res)=>{
 }
 
 const update = (req, res)=>{
-    if(req.body.password == req.session.user.pw){
-        if(req.body.password == req.body.password2){
+    if(req.body.password === req.session.user.pw){
+        if(req.body.password === req.body.password2){
             let sql = `UPDATE users SET nick='${req.body.nick}' WHERE id='${req.session.user.id}'`;
             pool.query(sql, (err, rows, fields)=>{
                 if(err) throw err;
@@ -33,8 +33,8 @@ const update = (req, res)=>{
 }
 
 const withdrawal = (req, res)=>{
-    if(req.body.password == req.session.user.pw){
-        if(req.body.password == req.body.password2){
+    if(req.body.password === req.session.user.pw){
+        if(req.body.password === req.body.password2){
             let sql = `DELETE FROM users WHERE id='${req.session.user.id}'`;
             pool.query(sql, (err, rows, fields)=>{
                 if(err) throw err;
