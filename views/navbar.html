@@ -1,32 +1,32 @@
 <div class="min-h-full">
-  <nav class="bg-gray-800">
+  <nav class="bg-gray-700">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+            <img class="h-8 w-8" style="background-color: (0,0,0,0);" src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/cnoC/image/JQ_HusUnDX9WANSKsVQP4CzcfV8.jpg" alt="Your Company">
           </div>
           <div class="ml-10 flex items-baseline space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">수행평가</a>
+            <a href="/" class="rounded-md bg-transparent  text-stone-50 font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-transparent " aria-current="page">수행평가</a>
             {% if user %} 
-              <a href="/user/myPage" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{user.name}}</a>
+              <a href="/user/myPage" class="rounded-md bg-transparent  text-stone-50 font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-transparent ">{{user.name}}</a>
             {% else %}
-              <a href="/auth/signIn" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">사용자페이지</a>
+              <a href="/auth/signIn" class="rounded-md bg-transparent  text-stone-50 font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-transparent ">사용자페이지</a>
             {% endif %} 
-            <a href="/user/list" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">사용자리스트</a>
+            <a href="/user/list" class="rounded-md bg-transparent  text-stone-50 font-semibold hover:text-white py-2 px-4 border border-white -500 hover:border-transparent ">사용자리스트</a>
             <li style="list-style: none;" class="nav-item">
-              <a class="nav-link" target='_blank' href="https://github.com/hwiseong18"><i class="fa-brands fa-github fa-lg" style="color:white"></i></a>
+              <a class="nav-link rounded-md bg-transparent  text-stone-50 font-semibold hover:text-white py-2.5 px-4 border border-white-500 hover:border-transparent" target='_blank' href="https://github.com/hwiseong18"><i class="fa-brands fa-github fa-lg" style="color:white"></i></a>
             </li>
           </div>
         </div>
         <div class="ml-4 flex items-center md:ml-6">
           {% if user %}
-            <button onclick="location.href='/auth/signOut'" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full">
+            <button onclick="location.href='/auth/signOut'" class="bg-transparent text-stone-50 font-semibold hover:text-white py-2 px-4 border border-text-stone-50 hover:border-transparent rounded-full">
               Sign out
             </button>
           {% else %} 
-            <button onclick="location.href='/auth/signIn'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            <button onclick="location.href='/auth/signIn'" class="bg-transparent text-stone-50 font-semibold hover:text-white py-2 px-4 border border-text-stone-50 hover:border-transparent rounded-full">
               Sign In
             </button>
           {% endif %} 
