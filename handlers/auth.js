@@ -19,8 +19,7 @@ const signInProcess = (req, res)=>{
             res.redirect('/');
         }
         else
-            res.render('message.html', {msg:'틀렸노 동성애자야'});
-
+            res.render('message.html', {msg:'아이디 혹은 비밀번호가 틀렸습니다'});
     })
 }
 
@@ -30,25 +29,32 @@ const signOut = (req, res)=>{
 }
 
 const signUp = (req, res)=>{
-    res.render('auth/signUp.html');
+    if(req.session.user === undefined)
+        res.render('auth/signUp.html');
+    else
+        res.redirect('/')
 }
 
 const signUpProcess = (req, res)=>{
-    let sql = `SELECT id FROM users WHERE id='${req.body.email}'`;
-    pool.query(sql, (err, rows, fields)=>{
-        if(err) throw err;
-        if(rows.length === 0){
-            let sql = `INSERT INTO users (id, nick, pw, joinDate, lastLogin, tier) VALUES (?,?,?,?,?,?)`;
-            let values = [req.body.email, req.body.nick, req.body.password, 
-                            getDateTime(new Date()),getDateTime(new Date()), '돌대머리'];
-            pool.query(sql, values, (err, rows, fields)=>{
-                if(err) throw err;
-                res.redirect('/auth/signIn');
-            })
-        }
-        else
-            res.render('message.html', {msg:'중복있죠'});
-    })
+    if(req.body.password === req.body.password2){
+        let sql = `SELECT id FROM users WHERE id='${req.body.email}'`;
+        pool.query(sql, (err, rows, fields)=>{
+            if(err) throw err;
+            if(rows.length === 0){
+                let sql = `INSERT INTO users (id, nick, pw, joinDate, lastLogin, tier) VALUES (?,?,?,?,?,?)`;
+                let values = [req.body.email, req.body.nick, req.body.password, 
+                                getDateTime(new Date()),getDateTime(new Date()), '돌대머리'];
+                pool.query(sql, values, (err, rows, fields)=>{
+                    if(err) throw err;
+                    res.render('message.html', {msg:'가입을 환영합니다'})
+                })
+            }
+            else
+                res.render('message.html', {msg:'중복된 이메일이 있습니다'});
+        })
+    }
+    else
+        res.render('message.html', {msg:'비번이 서로 일치하지 않습니다'})
 }
 
 module.exports = {

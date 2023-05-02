@@ -23,10 +23,10 @@ const update = (req, res)=>{
             })
         }
         else
-            res.render('message.html', {msg:'비번 서로 안맞음'});
+            res.render('message.html', {msg:'비번 서로 안맞음', user:req.session.user});
     }
     else
-        res.render('message.html', {msg:'비번 틀림'});
+        res.render('message.html', {msg:'비번 틀림', user:req.session.user});
 }
 
 const withdrawal = (req, res)=>{
