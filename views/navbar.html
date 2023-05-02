@@ -11,10 +11,8 @@
             <a href="/" class="rounded-md bg-transparent  text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent " aria-current="page">수행평가</a>
             {% if user %} 
               <a href="/user/myPage" class="rounded-md bg-transparent  text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-1 hover:border-transparent ">{{user.name}}</a>
-            {% else %}
-              <a href="/auth/signIn" class="rounded-md bg-transparent  text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-1 hover:border-transparent ">사용자페이지</a>
+              <a href="/user/list" class="rounded-md bg-transparent  text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-1 hover:border-transparent ">사용자리스트</a>
             {% endif %} 
-            <a href="/user/list" class="rounded-md bg-transparent  text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-1 hover:border-transparent ">사용자리스트</a>
             <li style="list-style: none;" class="nav-item">
               <a class="nav-link rounded-md bg-transparent  text-white font-semibold hover:text-white py-2.5 px-4 border border-white hover:border-1 hover:border-transparent" target='_blank' href="https://github.com/hwiseong18"><i class="fa-brands fa-github fa-lg" style="color:white"></i></a>
             </li>
